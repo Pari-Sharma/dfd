@@ -1,15 +1,55 @@
-<p>login works!</p>
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut"> 
-       <ul *ngIf="auth.user$ | async as user">
-        <li>{{ user.name }}</li>
-        <li>{{ user.email }}</li>
-      </ul>
-    <button (click)="auth.logout({ returnTo: document.location.origin })">
-      Log out
-    </button>
+<div class="container">
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <h1>Logout ! </h1><p class="text-medium-emphasis">Sign In to your account</p>
+        <button class="logout" (click)="auth.logout({ returnTo: document.location.origin })">
+            Log out
+        </button>
+    </ng-container>
 
-  </ng-container>
+    <ng-template #loggedOut>
+        <h1>
+            Login to dashboard !
+        </h1><p class="text-medium-emphasis">Sign Out From your account</p>
+        <button class="login" (click)="auth.loginWithRedirect()">Log in</button>
+    </ng-template>
 
-  <ng-template #loggedOut>
-    <button (click)="auth.loginWithRedirect()">Log in</button>
-  </ng-template>
+</div>
+<ul *ngIf="auth.user$ | async as user">
+    <Form cForm [formGroup]="simpleForm" (ngSubmit)="onSubmit()" class="needs-validation">
+        <div class="main">
+            <h2>Please Fill The Details:</h2>
+            <div class="mb-3 form-group">
+                <label cLabel For="CompanyName">Company Name</label>
+                <input cFormControl id="exampleFormControlInput1" placeholder="Company Name"
+                    formControlName="CompanyName" autocomplete="none" type="text" required />
+            </div>
+            <div class="mb-3 form-group">
+                <label cLabel For="CompanyPAN">Company PAN</label>
+                <input cFormControl id="CompanyPAN" placeholder="Company PAN" formControlName="CompanyPAN"
+                    autocomplete="none" type="text" required />
+            </div>
+            <div class="mb-3 form-group">
+                <label cLabel For="CompanyGST">Company GST</label>
+                <input cFormControl id="CompanyGST" placeholder="Company GST" formControlName="CompanyGST"
+                    autocomplete="none" type="text" required />
+            </div>
+            <div class="mb-3 form-group">
+                <label cLabel For="ContactPerson">Point oF contact person Name</label>
+                <input cFormControl id="ContactPerson" placeholder="Contact person Name" formControlName="ContactPerson"
+                    autocomplete="none" required type="text" />
+            </div>
+            <div class="mb-3 form-group">
+                <label cLabel For="Email"> OFicial Email address</label>
+                <input cFormControl id="Email" formControlName="Email" placeholder="Company Email "
+                    placeholder="name@example.com" autocomplete="none" required type="email" />
+            </div>
+            <div class="mb-3 form-group">
+                <label cLabel For="ContactNo">Contact No.</label>
+                <input cFormControl id="ContactNo" placeholder="Contact No" type="text" formControlName="ContactNo"
+                    autocomplete="none" required />
+            </div>
+            <button cButton color="primary" type="submit" [disabled]="!simpleForm.valid"
+                [tabindex]="'0'">Submit</button>
+        </div>
+    </Form>
+</ul>
