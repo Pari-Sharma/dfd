@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

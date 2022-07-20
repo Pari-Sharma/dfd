@@ -30,9 +30,6 @@ export class LoginComponent implements OnInit {
   get f() {
     return this.simpleForm.controls;
   }
-
-
-    
   onSubmit() {
     console.warn( this.simpleForm.value);
     this.simpleForm.reset();

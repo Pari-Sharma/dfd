@@ -1,55 +1,96 @@
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <h1>Logout ! </h1><p class="text-medium-emphasis">Sign In to your account</p>
+    <button class="btn btn-lg btn-outline-light mt-3" (click)="auth.logout({ returnTo: document.location.origin })">
+        Log out
+    </button>
+</ng-container>
+
 <div class="container">
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-        <h1>Logout ! </h1><p class="text-medium-emphasis">Sign In to your account</p>
-        <button class="logout" (click)="auth.logout({ returnTo: document.location.origin })">
-            Log out
-        </button>
-    </ng-container>
-
     <ng-template #loggedOut>
-        <h1>
-            Login to dashboard !
-        </h1><p class="text-medium-emphasis">Sign Out From your account</p>
-        <button class="login" (click)="auth.loginWithRedirect()">Log in</button>
+        <div class="bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent">
+            <div class="container">
+            <div class="row justify-content-center">
+            <div class="col-lg-4">
+            <div class="card-group d-block d-md-flex row">
+            <div class="card col-md-5 text-white bg-primary py-5">
+            <div class="card-body text-center">
+            <div>
+            <h2>Log In</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button class="btn btn-lg btn-outline-light mt-3" type="button" (click)="auth.loginWithRedirect()">Log in !</button>
+            
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
     </ng-template>
-
 </div>
 <ul *ngIf="auth.user$ | async as user">
-    <Form cForm [formGroup]="simpleForm" (ngSubmit)="onSubmit()" class="needs-validation">
-        <div class="main">
-            <h2>Please Fill The Details:</h2>
-            <div class="mb-3 form-group">
-                <label cLabel For="CompanyName">Company Name</label>
-                <input cFormControl id="exampleFormControlInput1" placeholder="Company Name"
-                    formControlName="CompanyName" autocomplete="none" type="text" required />
-            </div>
-            <div class="mb-3 form-group">
-                <label cLabel For="CompanyPAN">Company PAN</label>
-                <input cFormControl id="CompanyPAN" placeholder="Company PAN" formControlName="CompanyPAN"
-                    autocomplete="none" type="text" required />
-            </div>
-            <div class="mb-3 form-group">
-                <label cLabel For="CompanyGST">Company GST</label>
-                <input cFormControl id="CompanyGST" placeholder="Company GST" formControlName="CompanyGST"
-                    autocomplete="none" type="text" required />
-            </div>
-            <div class="mb-3 form-group">
-                <label cLabel For="ContactPerson">Point oF contact person Name</label>
-                <input cFormControl id="ContactPerson" placeholder="Contact person Name" formControlName="ContactPerson"
-                    autocomplete="none" required type="text" />
-            </div>
-            <div class="mb-3 form-group">
-                <label cLabel For="Email"> OFicial Email address</label>
-                <input cFormControl id="Email" formControlName="Email" placeholder="Company Email "
-                    placeholder="name@example.com" autocomplete="none" required type="email" />
-            </div>
-            <div class="mb-3 form-group">
-                <label cLabel For="ContactNo">Contact No.</label>
-                <input cFormControl id="ContactNo" placeholder="Contact No" type="text" formControlName="ContactNo"
-                    autocomplete="none" required />
-            </div>
-            <button cButton color="primary" type="submit" [disabled]="!simpleForm.valid"
-                [tabindex]="'0'">Submit</button>
+    <div class="bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent">
+        <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-md-6">
+        <div class="card mb-4 mx-4">
+        <div class="card-body p-4">   
+         <Form cForm [formGroup]="simpleForm" (ngSubmit)="onSubmit()" class="needs-validation">
+
+        <h1>Register</h1>
+        <p class="text-medium-emphasis">Create your account</p>
+        
+        <div class="input-group mb-3"><span class="input-group-text">
+        <svg class="icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+        </svg></span>
+        <input cFormControl class="form-control" id="CompanyName" placeholder="Company Name" formControlName="CompanyName"
+        autocomplete="none" type="text" required />
         </div>
-    </Form>
+        <div class="input-group mb-3"><span class="input-group-text">
+        <svg class="icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+        </svg></span>
+        <input cFormControl class="form-control" id="CompanyPAN" placeholder="Company PAN" formControlName="CompanyPAN"
+        autocomplete="none" type="text" required />
+        </div>
+        <div class="input-group mb-3"><span class="input-group-text">
+        <svg class="icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+        </svg></span>
+        <input cFormControl class="form-control" id="CompanyGST" placeholder="Company GST" formControlName="CompanyGST"
+        autocomplete="none" type="text" required />
+        </div>
+        <div class="input-group mb-4"><span class="input-group-text">
+        <svg class="icon">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+        </svg></span>
+        <input cFormControl class="form-control" id="ContactPerson" placeholder="Point Of Contact Person Name" formControlName="ContactPerson"
+        autocomplete="none" type="text" required />
+        </div>
+        <div class="input-group mb-3"><span class="input-group-text">
+            <svg class="icon">
+            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+            </svg></span>
+            <input cFormControl class="form-control" id="Email" placeholder="Official Email Address" formControlName="Email"
+            autocomplete="off" type="email" required />
+            </div>
+
+            <div class="input-group mb-3"><span class="input-group-text">
+                <svg class="icon">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                </svg></span>
+                <input cFormControl class="form-control" id="ContactNo" placeholder="Contact Number" formControlName="ContactNo"
+                autocomplete="none" type="text" required />
+                </div>
+        <button cButton color="primary" class="btn btn-block btn-success" type="submit" [disabled]="!simpleForm.valid" routerLinkActive="active" routerlink="dashboard"
+        [tabindex]="'0'">Submit</button>
+        </Form> </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    <!---->
 </ul>
