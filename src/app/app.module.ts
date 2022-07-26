@@ -1,6 +1,5 @@
 import { NgModule, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { FormModule } from '@coreui/angular';
 import { AlertModule } from '@coreui/angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AlertModule,
+    HttpClientModule,
     FormModule,
     ReactiveFormsModule,
     AuthModule.forRoot({

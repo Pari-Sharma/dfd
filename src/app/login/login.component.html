@@ -36,7 +36,7 @@
         <div class="col-md-6">
         <div class="card mb-4 mx-4">
         <div class="card-body p-4">   
-         <Form cForm [formGroup]="simpleForm" (ngSubmit)="onSubmit()" class="needs-validation">
+         <Form cForm [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" class="needs-validation">
 
         <h1>Register</h1>
         <p class="text-medium-emphasis">Create your account</p>
@@ -84,7 +84,7 @@
                 <input cFormControl class="form-control" id="ContactNo" placeholder="Contact Number" formControlName="ContactNo"
                 autocomplete="none" type="text" required />
                 </div>
-        <button cButton color="primary" class="btn btn-block btn-success" type="submit" [disabled]="!simpleForm.valid" routerLinkActive="active" routerlink="dashboard"
+        <button cButton color="primary" class="btn btn-block btn-success" (click)="Register()" type="submit" [disabled]="!RegisterForm.valid" routerLinkActive="active" routerlink="dashboard"
         [tabindex]="'0'">Submit</button>
         </Form> </div>
         </div>
